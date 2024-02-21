@@ -7,8 +7,10 @@ For Ghost 0.10.x and 0.11.x support check out
 
 ## Installation
 
+Run these commands inside your ghost install. (i.e. `cd /var/www/ghost`)
+
 ```shell
-npm install ghost-storage-adapter-s3
+npm install azure-agst/ghost-storage-adapter-s3
 mkdir -p ./content/adapters/storage
 cp -r ./node_modules/ghost-storage-adapter-s3 ./content/adapters/storage/s3
 ```
