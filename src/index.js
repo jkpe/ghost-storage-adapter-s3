@@ -145,6 +145,23 @@ class Store extends BaseStore {
         }, (err, data) => err ? reject(err) : resolve(data.Body))
     })
   }
+
+  urlToPath(url) {
+    // url is directly returned from save, so we can assume it'll be prefixed with this.host 99% of the time
+    let filePath;
+
+    if (url.startsWith(this.host)) {
+        // CASE: full url that includes the asset host
+        filePath = stripLeadingSlash(url.replace(this.host, ""));
+    } else {
+        // just in case we get some weird url here
+        throw new errors.IncorrectUsageError({
+            message: tpl(messages.invalidUrlParameter, {url})
+        });
+    }
+
+    return filePath;
+}
 }
 
 export default Store
